@@ -1,26 +1,27 @@
-package cvmakerr.advance.cvmakepro.MainClass
+package cvmakerr.advance.cvmakepro.Main_Ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cvmakerr.advance.cvmakepro.Adapters.MainLoaderAdapter
-import cvmakerr.advance.cvmakepro.Fragments.PersonalInfo_Fragment
+import cvmakerr.advance.cvmakepro.Adapters.Cv_Type_List_Adapter
+import cvmakerr.advance.cvmakepro.Fragments.*
+
 import cvmakerr.advance.cvmakepro.Model_Classes.Typemodel
 import cvmakerr.advance.cvmakepro.R
 
 
-class MainHome : AppCompatActivity(), MainLoaderAdapter.CellClickListener{
+class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
 
     lateinit var mainbg: ConstraintLayout
-
+    private lateinit var fragment: PersonalInfo_Fragment
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,29 +43,87 @@ class MainHome : AppCompatActivity(), MainLoaderAdapter.CellClickListener{
         typesmodels.add(Typemodel("Hobbies", 8, R.drawable.img_skills, R.color.hobby))
         typesmodels.add(Typemodel("Languages", 5, R.drawable.img_languge, R.color.lang))
         typesmodels.add(Typemodel("Reference", 10, R.drawable.img_reference, R.color.ref))
-        //creating our adapter
 
-        val adapter = MainLoaderAdapter(typesmodels, this, this)
+
+        //creating our adapter
+        val adapter = Cv_Type_List_Adapter(typesmodels, this, this)
 
         //now adding the adapter to recyclerview
       recyclerView.adapter = adapter
-        switchToaboutmeFragment()
+        switchToPersonalInfoFragment()
+
+
+
+
     }
 
     override fun onCellClickListener(position: Int, data: Typemodel) {
-        Toast.makeText(this, "data" + data.name, Toast.LENGTH_SHORT).show()
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            mainbg.setBackgroundColor(getColor(data.tintcolor))
+            mainbg.setBackgroundColor(getColor(R.color.purple_200))
+        }
+        if (position==0)
+        {
+
+            switchFragment(PersonalInfo_Fragment())
+        }
+        else if (position==1)
+        {
+
+            switchFragment(About_Fragment())
+        }
+        else if(position==2)
+        {
+
+            switchFragment(Experience_Fragment())
+        }
+        else if(position==3)
+        {
+            switchFragment(Qualification_Fragment())
+        }
+        else if(position==4)
+        {
+            switchFragment(Skill_Fragment())
+        }
+        else if(position==5)
+        {
+            switchFragment(AchievementFragment())
+        }
+        else if(position==6)
+        {
+            switchFragment(Project_Fragment())
+        }
+        else if(position==7)
+        {
+            switchFragment(Hobbie_Fragment())
+        }
+        else if(position==8)
+        {
+            switchFragment(LanguageFragment())
+        }
+        else if(position==9)
+        {
+
         }
     }
 
-    fun switchToaboutmeFragment() {
+    private fun switchFragment(fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
-        transaction.add(R.id.fragmentarea, PersonalInfo_Fragment())
+        transaction.replace(R.id.fragmentarea,fragment)
+        transaction.commit()
+    }
+
+
+    fun switchToPersonalInfoFragment() {
+        val manager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        transaction.replace(R.id.fragmentarea, PersonalInfo_Fragment())
+
         transaction.commit()
 
     }
+
 }
 
 

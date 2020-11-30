@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mainbg"
-    tools:context=".MainClass.MainHome">
+
+    tools:context=".Main_Ui.MainHome">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclertype"
@@ -19,10 +20,7 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +30,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/purple_200">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -47,6 +46,7 @@
                     android:id="@+id/fragmentarea"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:background="#fff"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
