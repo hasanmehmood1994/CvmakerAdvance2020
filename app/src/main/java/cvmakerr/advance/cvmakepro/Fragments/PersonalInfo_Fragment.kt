@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import cvmakerr.advance.cvmakepro.R
 import cvmakerr.advance.cvmakepro.Shared_Prefrence.SharedPrefMain
@@ -48,17 +49,13 @@ sharedPrefMain= activity?.let { SharedPrefMain(it) }
         ed_address.setText("" + sharedPrefMain?.getaddress())
         ed_phone.setText("" + sharedPrefMain?.getphone())
         ed_email.setText("" + sharedPrefMain?.getemail())
+        ed_professional.setText("" + sharedPrefMain?.getprofession())
+
         ed_nationality.setText("" + sharedPrefMain?.getnatinality())
         ed_cnic.setText("" + sharedPrefMain?.getnic())
         ed_status.setText("" + sharedPrefMain?.getstatus())
         ed_website.setText("" + sharedPrefMain?.getweb())
 
-//        sharedpreferences =  getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        if (sharedpreferences.contains(key))
-//        {
-//            String u=sharedpreferences.getString(key, "");
-//
-//        }
         if (sharedPrefMain?.getimg().equals("0")) {
           profile_image.setImageResource(R.drawable.icon_profile)
         } else {
@@ -75,6 +72,7 @@ sharedPrefMain= activity?.let { SharedPrefMain(it) }
         ed_date.addTextChangedListener(textWatcher_date)
         ed_phone.addTextChangedListener(textWatcher_phone)
         ed_email.addTextChangedListener(textWatcher_email)
+        ed_professional.addTextChangedListener(textWatcher_professional)
         ed_nationality.addTextChangedListener(textWatcher_nationality)
         ed_cnic.addTextChangedListener(textWatcher_cnic)
         ed_status.addTextChangedListener(textWatcher_status)
@@ -199,6 +197,21 @@ sharedPrefMain= activity?.let { SharedPrefMain(it) }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             sharedPrefMain?.setemail("" + s)
+            if (start == 30) {
+                Toast.makeText(activity, "Maximum Limit Reached", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+    private val textWatcher_professional = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            sharedPrefMain?.setprofession("" + s)
             if (start == 30) {
                 Toast.makeText(activity, "Maximum Limit Reached", Toast.LENGTH_SHORT)
                     .show()

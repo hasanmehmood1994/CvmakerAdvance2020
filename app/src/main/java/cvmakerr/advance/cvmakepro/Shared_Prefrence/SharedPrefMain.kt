@@ -42,7 +42,14 @@ class SharedPrefMain(context: Context) {
     fun getaddress(): String? {
         return sharedPreferences.getString("cvaddress", "")
     }
+    fun setprofession(id: String?) {
+        editor.putString("cvprofession", id)
+        editor.commit()
+    }
 
+    fun getprofession(): String? {
+        return sharedPreferences.getString("cvprofession", "")
+    }
     fun setphone(id: String?) {
         editor.putString("cvphone", id)
         editor.commit()
@@ -118,7 +125,15 @@ class SharedPrefMain(context: Context) {
     fun getweb(): String? {
         return sharedPreferences.getString("cvweb", "")
     }
+//ref
+    fun setref(id: String?) {
+        editor.putString("cvref", id)
+        editor.commit()
+    }
 
+    fun getref(): String? {
+        return sharedPreferences.getString("cvref", "")
+    }
     init {
         sharedPreferences = context.getSharedPreferences("cvmakerprefnbapps1", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()

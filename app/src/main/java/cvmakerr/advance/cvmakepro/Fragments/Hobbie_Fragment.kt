@@ -95,7 +95,7 @@ class Hobbie_Fragment : Fragment(),Hobbie_Adapter.OnClickListener_Recycler,Hobbi
     }
 
     override fun deleteclick_listner(position: Int, get: Hobbies) {
-        viewModelClass?.deleteSingleSkills(get.id)
+        viewModelClass?.deleteSingleHobbies(get.id)
     }
 
 

@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.libizo:customedittext:1.0.6'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
-
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+    implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
 
 }

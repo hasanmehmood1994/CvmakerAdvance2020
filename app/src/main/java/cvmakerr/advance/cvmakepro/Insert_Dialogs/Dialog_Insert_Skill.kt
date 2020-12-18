@@ -54,7 +54,7 @@ class Dialog_Insert_Skill(
                 val ski = Skills(
                     id,
                     "" + skill_name.text.toString(),
-                    "" + seekBar.progress + " %",
+                    "" + seekBar.progress ,
                     seekBar.progress
                 )
                 // experienceViewModel?.setExperience(exper)
@@ -69,7 +69,7 @@ class Dialog_Insert_Skill(
                 val ski = Skills(
                     0,
                     "" + skill_name.text.toString(),
-                    "" + seekBar.progress + " %",
+                    "" + seekBar.progress ,
                     seekBar.progress
                 )
 

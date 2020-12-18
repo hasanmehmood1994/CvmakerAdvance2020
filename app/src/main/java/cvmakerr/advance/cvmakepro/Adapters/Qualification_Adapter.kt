@@ -16,6 +16,7 @@ class Qualification_Adapter(private val  context: Context, private val qualifica
     RecyclerView.Adapter<Qualification_Adapter.Qualification_ViewHolder>() {
 
 
+
     override fun onBindViewHolder(holder: Qualification_ViewHolder, position: Int) {
         holder.title.text = qualification?.get(position)?.degreename
         holder.name.text = qualification?.get(position)?.institute

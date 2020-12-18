@@ -94,7 +94,7 @@ class LanguageFragment : Fragment() ,Language_Adapter.OnClickListener_Recycler,L
     }
 
     override fun deleteclick_listner(position: Int, get:Languages) {
-        viewModelClass?.deleteSingleSkills(get.id)
+        viewModelClass?.deleteSingleLanguages(get.id)
     }
 
 

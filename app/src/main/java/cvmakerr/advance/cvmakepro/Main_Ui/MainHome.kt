@@ -1,7 +1,12 @@
 package cvmakerr.advance.cvmakepro.Main_Ui
 
 import android.annotation.SuppressLint
+import android.app.ActionBar
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.View
+import android.view.Window
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cvmakerr.advance.cvmakepro.Adapters.Cv_Type_List_Adapter
 import cvmakerr.advance.cvmakepro.Fragments.*
+import cvmakerr.advance.cvmakepro.Insert_Dialogs.Dialog_Insert_Qualification
+import cvmakerr.advance.cvmakepro.Insert_Dialogs.Dialog_Template_Selection
 
 import cvmakerr.advance.cvmakepro.Model_Classes.Typemodel
 import cvmakerr.advance.cvmakepro.R
+import kotlinx.android.synthetic.main.activity_main_home.*
 
 
 class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
@@ -53,7 +61,19 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
         switchToPersonalInfoFragment()
 
 
+        imgp.setOnClickListener(View.OnClickListener {
 
+
+
+
+            val _dialogAddtext = this?.let { it1 ->   Dialog_Template_Selection(it1) }
+            _dialogAddtext?.getWindow()?.getAttributes()?.windowAnimations = R.style.DialogAnimation
+            _dialogAddtext?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            _dialogAddtext?.show()
+            val window: Window? = _dialogAddtext?.getWindow()
+            window?.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT)
+
+        })
 
     }
 
@@ -103,6 +123,9 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
         }
         else if(position==9)
         {
+            switchFragment(Reference_Fragment())
+        }
+        else{
 
         }
     }
@@ -110,7 +133,7 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
     private fun switchFragment(fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
-        transaction.replace(R.id.fragmentarea,fragment)
+        transaction.replace(R.id.fragmentarea, fragment)
         transaction.commit()
     }
 
@@ -124,6 +147,15 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
 
     }
 
+    override fun onBackPressed() {
+
+    }
+
+    fun asasa(view: View) {
+
+        Toast.makeText(this, "asa", Toast.LENGTH_SHORT);
+
+    }
 }
 
 

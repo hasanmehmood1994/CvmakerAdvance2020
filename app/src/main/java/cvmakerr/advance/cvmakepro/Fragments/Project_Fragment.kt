@@ -92,7 +92,7 @@ class Project_Fragment : Fragment(),Project_Adapter.OnClickListener_Recycler,Pro
     }
 
     override fun deleteclick_listner(position: Int, get: Projects) {
-        viewModelClass?.deleteSingleQualification(get.id)
+        viewModelClass?.deleteSingleProjects(get.id)
     }
 
 

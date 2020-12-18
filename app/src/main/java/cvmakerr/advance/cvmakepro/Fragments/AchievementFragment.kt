@@ -92,7 +92,7 @@ class AchievementFragment : Fragment(),Achievements_Adapter.OnClickListener_Recy
     }
 
     override fun deleteclick_listner(position: Int, get: Achievements) {
-        viewModelClass?.deleteSingleQualification(get.id)
+        viewModelClass?.deleteSingleAchievements(get.id)
     }
 
 
