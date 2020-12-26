@@ -1,14 +1,19 @@
 package cvmakerr.advance.cvmakepro.Main_Ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
 import cvmakerr.advance.cvmakepro.Adapters.History_Adapter
 import cvmakerr.advance.cvmakepro.R
 import cvmakerr.advance.cvmakepro.Room_Database.Entities.History
@@ -21,7 +26,8 @@ import java.io.FileOutputStream
 class ViewHistory : AppCompatActivity(),History_Adapter.OnClickListener_Recycler,History_Adapter.OnClickListener_RecyclerDelete {
     private var viewModelClass: ViewModel_Class?=null
     lateinit var adapter: History_Adapter
-
+    lateinit var mAdView : AdView
+    private lateinit var mInterstitialAd: InterstitialAd
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,19 +47,28 @@ class ViewHistory : AppCompatActivity(),History_Adapter.OnClickListener_Recycler
                 Log.e("size", "" + it.size)
                 this.setRecyler(it)
                 imgempty.visibility = View.GONE
+                if(it.size>1)
+                {
+                    Toast.makeText(this,"Slide left to view more",Toast.LENGTH_SHORT).show()
+                }
             }
 
         })
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
     }
 
 
+    @SuppressLint("WrongConstant")
     private fun setRecyler(skills: List<History>?){
         adapter = skills?.let { this@ViewHistory?.let { it1 -> History_Adapter(it1, it, this, this) } }!!
-        val layoutManager = LinearLayoutManager(this)
-        layoutManager.stackFromEnd = true
-        layoutManager.reverseLayout=true
-        recyler_view.layoutManager = layoutManager
+
+        recyler_view?.layoutManager = LinearLayoutManager(this, LinearLayout.HORIZONTAL, false)
         recyler_view.adapter = adapter
 
     }
