@@ -163,7 +163,13 @@ finish()
 
     fun clickpreview(view: View) {
 
-        Toast.makeText(this, "asa", Toast.LENGTH_SHORT);
+        val _dialogAddtext = this?.let { it1 ->   Dialog_Template_Selection(it1) }
+        _dialogAddtext?.getWindow()?.getAttributes()?.windowAnimations = R.style.DialogAnimation
+        _dialogAddtext?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        _dialogAddtext?.show()
+        val window: Window? = _dialogAddtext?.getWindow()
+        window?.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT)
+
 
     }
 }
