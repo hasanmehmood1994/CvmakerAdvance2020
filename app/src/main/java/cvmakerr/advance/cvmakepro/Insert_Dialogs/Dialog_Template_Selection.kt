@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cvmakerr.advance.cvmakepro.Adapters.DataModel
 import cvmakerr.advance.cvmakepro.Adapters.testadap
 import cvmakerr.advance.cvmakepro.CvTemplates.Design1.CreateMenu
+import cvmakerr.advance.cvmakepro.CvTemplates.Design1.CreateMenu2
 import cvmakerr.advance.cvmakepro.R
 
 class Dialog_Template_Selection(context: Context) : Dialog(context) ,testadap.OnClickListener_Recycler{
@@ -29,6 +30,7 @@ class Dialog_Template_Selection(context: Context) : Dialog(context) ,testadap.On
     fun funasa() {
       listView?.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         dataModels = ArrayList()
+        ////////////////////////1111111
         dataModels!!.add(DataModel("1", R.layout.temp1_d1))
         dataModels!!.add(DataModel("1", R.layout.temp1_d2))
         dataModels!!.add(DataModel("1", R.layout.temp1_d3))
@@ -36,8 +38,21 @@ class Dialog_Template_Selection(context: Context) : Dialog(context) ,testadap.On
         dataModels!!.add(DataModel("1", R.layout.temp1_d5))
         dataModels!!.add(DataModel("1", R.layout.temp1_d6))
         dataModels!!.add(DataModel("1", R.layout.temp1_d7))
-        dataModels!!.add(DataModel("3", R.layout.temp3_d2))
+        ////////////////////////2222222
+        dataModels!!.add(DataModel("2", R.layout.temp3_d2))
         dataModels!!.add(DataModel("2", R.layout.temp2_d1))
+        dataModels!!.add(DataModel("2", R.layout.temp3_d3))
+        dataModels!!.add(DataModel("2", R.layout.temp3_d4))
+        dataModels!!.add(DataModel("2", R.layout.temp3_d5))
+        dataModels!!.add(DataModel("2", R.layout.temp3_d6))
+        dataModels!!.add(DataModel("2", R.layout.temp3_d7))
+        ////////////////////////3333333333
+
+        dataModels!!.add(DataModel("3", R.layout.temp4_d1))
+        dataModels!!.add(DataModel("3", R.layout.temp4_d2))
+        dataModels!!.add(DataModel("3", R.layout.temp4_d3))
+        dataModels!!.add(DataModel("3", R.layout.temp4_d4))
+        dataModels!!.add(DataModel("3", R.layout.temp4_d5))
         adapter2 = testadap(dataModels!!, context,this)
         listView!!.adapter = adapter2
 
@@ -48,7 +63,7 @@ class Dialog_Template_Selection(context: Context) : Dialog(context) ,testadap.On
     }
 
     override fun click_listner(lytid: Int, number: String) {
-        val intent2 = Intent(context, CreateMenu::class.java)
+        val intent2 = Intent(context, CreateMenu2::class.java)
         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent2.putExtra("idd", "" + lytid)
         intent2.putExtra("number", "" +number)

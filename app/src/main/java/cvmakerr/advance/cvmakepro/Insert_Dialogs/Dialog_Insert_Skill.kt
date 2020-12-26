@@ -28,7 +28,6 @@ class Dialog_Insert_Skill(
     context
 ),
     CoroutineScope {
-
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
     private var skillsDao: SkillsDao? = null

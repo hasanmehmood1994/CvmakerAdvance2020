@@ -5,12 +5,15 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import cvmakerr.advance.cvmakepro.Main_Ui.MainHome
+import cvmakerr.advance.cvmakepro.Main_Ui.Form_Page
+import cvmakerr.advance.cvmakepro.Main_Ui.HomePage
+import java.io.File
 
 class SplashScreen : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +23,22 @@ class SplashScreen : Activity() {
         funhandler();
 
     }
+    private fun createfolder() {
 
+
+
+            val direct2 = File(Environment.getExternalStorageDirectory().toString() + "/cvimages")
+            if (!direct2.exists()) {
+                if (direct2.mkdir());
+            }
+
+
+        val direct = File(Environment.getExternalStorageDirectory().toString() + "/cvpdfs")
+        if (!direct.exists()) {
+            if (direct.mkdir());
+        }
+
+    }
     private fun funhandler() {
         Handler().postDelayed({
             checkPermission()
@@ -29,7 +47,7 @@ class SplashScreen : Activity() {
         }, 2000)
     }
     private fun runActivity() {
-        val i = Intent(this@SplashScreen, MainHome::class.java)
+        val i = Intent(this@SplashScreen, HomePage::class.java)
         startActivity(i)
         finish()
     }
@@ -97,6 +115,7 @@ class SplashScreen : Activity() {
     ) {
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                createfolder()
                 runActivity()
             }
         }

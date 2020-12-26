@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import cvmakerr.advance.cvmakepro.Room_Database.Dio.*
 import cvmakerr.advance.cvmakepro.Room_Database.Entities.*
 
-@Database(entities = [Experience::class,Qualification::class  ,Achievements::class,Hobbies::class,Languages::class,Skills::class,Projects::class ], version = 2, exportSchema = false)
+@Database(entities = [Experience::class,Qualification::class  ,Achievements::class,Hobbies::class,Languages::class,Skills::class,Projects::class,History::class], version = 1, exportSchema = false)
 abstract class RoomDataBasecv : RoomDatabase() {
 
 
@@ -15,10 +15,11 @@ abstract class RoomDataBasecv : RoomDatabase() {
     abstract fun qualificationDao(): QualificationDao
     abstract fun achievementsDao(): AchievementsDao
     abstract fun hobbiesDao(): HobbiesDao
+
     abstract fun languagesDao(): LanguagesDao
     abstract fun skillsDao(): SkillsDao
     abstract fun projectsDao():ProjectsDao
-
+    abstract fun historyDao():HistoryDao
     companion object {
 
         @Volatile
@@ -30,7 +31,7 @@ abstract class RoomDataBasecv : RoomDatabase() {
                     if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
-                            RoomDataBasecv::class.java, "testcvdb2"
+                            RoomDataBasecv::class.java, "testcvdb8"
                         )
                             .build()
                     }

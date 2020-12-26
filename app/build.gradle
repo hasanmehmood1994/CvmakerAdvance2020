@@ -70,5 +70,6 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
     implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
     implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
 
 }

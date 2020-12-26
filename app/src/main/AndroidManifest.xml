@@ -14,22 +14,54 @@
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.CvmakerAdvance">
-        <activity android:name=".Template_Selector"></activity>
+        <activity android:name=".Main_Ui.ViewHistory"></activity>
+        <activity
+            android:name=".Main_Ui.HomePage"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Template_Selector"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CvTemplates.Design1.CreateMenu"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".CvTemplates.Design1.design1_temp2"
-            android:launchMode="singleTask" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Main_Ui.MainHome" />
-        <activity android:name=".SplashScreen">
+            android:name=".CvTemplates.Design1.CreateMenu2"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Main_Ui.Form_Page"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="cvmakerr.advance.cvmakepro"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+
     </application>
 
 </manifest>

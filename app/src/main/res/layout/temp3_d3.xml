@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/mainlyt"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2E75B7"
+        android:background="#FFAB00"
         android:orientation="vertical">
 
         <LinearLayout
@@ -18,14 +20,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/icon_cross" />
+                android:src="@drawable/icon_profile" />
 
             <TextView
                 android:id="@+id/name"
@@ -436,8 +441,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:background="#2E75B7"
+        android:background="#FFAB00"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" >
@@ -446,7 +452,8 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
 
             android:text="asdasdsadsa"
             android:textColor="#fff"
@@ -456,8 +463,8 @@
             android:id="@+id/web"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
             android:text="saadsadsad"
             android:textColor="#fff"
             android:textSize="8sp" />
@@ -466,10 +473,35 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
 
             android:text="asdsadsadas"
             android:textColor="#fff"
             android:textSize="8sp" />
     </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:background="@drawable/rect"
+        android:layout_width="50dp"
+        android:backgroundTint="#fff"
+        app:cardCornerRadius="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/savecard"
+        android:onClick="onclicksavecvimgae"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_baseline_save_24"
+                android:layout_height="wrap_content"
+                app:tint="#000" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

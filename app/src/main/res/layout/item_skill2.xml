@@ -22,9 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="----"
-            android:layout_marginLeft="1dp"
-
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:textColor="#000"
             android:textSize="8sp"
             />
@@ -37,6 +36,8 @@
             android:progress="34"
             android:progressTint="#000"
             android:thumbTint="#000"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

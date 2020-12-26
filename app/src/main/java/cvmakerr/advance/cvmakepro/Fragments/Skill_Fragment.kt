@@ -42,7 +42,6 @@ class Skill_Fragment : Fragment() ,Skill_Adapter.OnClickListener_Recycler,Skill_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModelClass = ViewModelProviders.of(this).get(ViewModel_Class::class.java)
-
         viewModelClass?.getSkills()?.observe(this, Observer<List<Skills>> {
             if (it.size==0)
             {

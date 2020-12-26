@@ -16,6 +16,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
 import cvmakerr.advance.cvmakepro.Adapters.Cv_Type_List_Adapter
 import cvmakerr.advance.cvmakepro.Fragments.*
 import cvmakerr.advance.cvmakepro.Insert_Dialogs.Dialog_Insert_Qualification
@@ -23,18 +26,19 @@ import cvmakerr.advance.cvmakepro.Insert_Dialogs.Dialog_Template_Selection
 
 import cvmakerr.advance.cvmakepro.Model_Classes.Typemodel
 import cvmakerr.advance.cvmakepro.R
-import kotlinx.android.synthetic.main.activity_main_home.*
+import kotlinx.android.synthetic.main.activity_form_page.*
 
 
-class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
-
+class Form_Page : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
+    lateinit var mAdView : AdView
+    private lateinit var mInterstitialAd: InterstitialAd
     lateinit var mainbg: ConstraintLayout
     private lateinit var fragment: PersonalInfo_Fragment
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSupportActionBar()!!.hide();
-        setContentView(R.layout.activity_main_home)
+        setContentView(R.layout.activity_form_page)
         setTitle("Home")
         val recyclerView = findViewById(R.id.recyclertype) as RecyclerView
         mainbg=findViewById(R.id.mainbg) as ConstraintLayout
@@ -74,7 +78,13 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
             window?.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT)
 
         })
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
     }
 
     override fun onCellClickListener(position: Int, data: Typemodel) {
@@ -148,10 +158,10 @@ class MainHome : AppCompatActivity(), Cv_Type_List_Adapter.CellClickListener{
     }
 
     override fun onBackPressed() {
-
+finish()
     }
 
-    fun asasa(view: View) {
+    fun clickpreview(view: View) {
 
         Toast.makeText(this, "asa", Toast.LENGTH_SHORT);
 

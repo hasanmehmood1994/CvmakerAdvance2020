@@ -21,7 +21,7 @@ class Repository (application: Application):CoroutineScope{
     private var languagesDao:LanguagesDao? = null
     private var projectsDao :ProjectsDao? = null
     private var hobbiesDao :HobbiesDao? = null
-
+    private var historyDao :HistoryDao? = null
     init {
         val db= RoomDataBasecv.getDatabase(application)
         experienceDao=db?.experienceDao()
@@ -31,6 +31,7 @@ class Repository (application: Application):CoroutineScope{
        languagesDao=db?.languagesDao()
         projectsDao=db?.projectsDao()
         hobbiesDao=db?.hobbiesDao()
+        historyDao=db?.historyDao()
     }
     //projects
     fun getProjects()=projectsDao?.getProjects()
@@ -226,6 +227,34 @@ class Repository (application: Application):CoroutineScope{
     private suspend fun delSingleSkillsBG(id: Int) {
         withContext(Dispatchers.IO){
             skillsDao?.deletesingle(id)
+        }
+    }
+
+
+    //history
+    fun getHistory()=historyDao?.getHistory()
+    fun setHistory(history:History) {
+        launch  { setHistoryBG(history) }
+    }
+    private suspend fun setHistoryBG(history:History) {
+        withContext(Dispatchers.IO){
+           historyDao?.setHistory(history)
+        }
+    }
+    fun delHistory() {
+        launch  { delHistoryBG() }
+    }
+    private suspend fun delHistoryBG() {
+        withContext(Dispatchers.IO){
+            historyDao?.deleteAll()
+        }
+    }
+    fun delSingleHistory(id: Int) {
+        launch  { delSingleHistoryBG(id) }
+    }
+    private suspend fun delSingleHistoryBG(id: Int) {
+        withContext(Dispatchers.IO){
+            historyDao?.deletesingle(id)
         }
     }
 }

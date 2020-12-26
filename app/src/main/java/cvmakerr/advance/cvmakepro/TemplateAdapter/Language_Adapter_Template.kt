@@ -24,12 +24,16 @@ class  Language_Adapter_Template(
         {  holder.languagename.text =language?.get(position)?.languagename
 
         }
-        else{
+        else if(which=="2"){
             holder.languagename.setTextColor(holder.itemView.resources.getColor(R.color.black))
             holder.languagename.text = language?.get(position)?.languagename
             holder.languagename.setTextColor(holder.itemView.resources.getColor(R.color.black))
         }
-
+        else if(which=="3"){
+            holder.languagename.setTextColor(holder.itemView.resources.getColor(R.color.white))
+            holder.languagename.text = language?.get(position)?.languagename
+            holder.languagename.setTextColor(holder.itemView.resources.getColor(R.color.white))
+        }
     }
     override fun getItemCount(): Int {
         return language?.size!!

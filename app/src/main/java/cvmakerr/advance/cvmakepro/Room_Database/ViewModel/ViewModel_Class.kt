@@ -52,4 +52,10 @@ class ViewModel_Class (application: Application) : AndroidViewModel(application)
     fun setSkills(skills:Skills) { repository.setSkills(skills)}
     fun deleteSkills() { repository.delSkills()}
     fun deleteSingleSkills(id: Int) { repository.delSingleSkills(id)}
+
+    //Skills
+    fun getHistory() = repository.getHistory()
+    fun setHistory(history:History) { repository.setHistory(history)}
+    fun deleteHistory() { repository.delHistory()}
+    fun deleteSingleHistory(id: Int) { repository.delSingleHistory(id)}
 }
